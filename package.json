@@ -1,0 +1,29 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenHuf/employee-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenHuf/employee-tracker/issues"
+  },
+  "homepage": "https://github.com/BenHuf/employee-tracker#readme",
+  "dependencies": {
+    "console-table": "^0.1.2",
+    "express": "^4.18.1",
+    "inquirer": "^9.0.0",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "jest": "^28.1.1"
+  }
+}
