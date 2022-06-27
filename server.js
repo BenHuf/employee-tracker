@@ -62,7 +62,10 @@ const prompt = () => {
 }
 
 const viewDepartments = () => {
-    const sql = `SELECT * FROM Department`
+    const sql = `SELECT department_name AS Department, department.id AS 'Department ID' 
+                FROM Department`
+
+    console.log('\n');
 
     db.query(sql, (err, res) => {
         if (err) throw err;
@@ -72,7 +75,11 @@ const viewDepartments = () => {
 };
 
 const viewRoles = () => {
-    const sql = `SELECT * FROM role`
+    const sql = `SELECT title as 'Job Title', role.id as 'Role ID', department.department_name AS Department, salary as Salary
+                FROM role 
+                INNER JOIN department ON role.department_id = department.id`
+
+    console.log('\n');
 
     db.query(sql, (err, res) => {
         if (err) throw err;
@@ -82,7 +89,13 @@ const viewRoles = () => {
 };
 
 const viewEmployees = () => {
-    const sql = `SELECT * FROM employee`
+    const sql = `SELECT e.id AS 'Employee ID', e.first_name AS 'First Name', e.last_name AS 'Last Name', role.title AS 'Job Title', department.department_name AS Department, role.salary AS Salary, CONCAT(m.first_name,' ',m.last_name) AS Manager
+                FROM employee e
+                LEFT JOIN employee m ON e.manager_id = m.id
+                INNER JOIN role ON e.role_id = role.id
+                INNER JOIN department ON role.department_id = department.id`
+
+    console.log('\n');
 
     db.query(sql, (err, res) => {
         if (err) throw err;
