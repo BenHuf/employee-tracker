@@ -342,9 +342,6 @@ const updateEmployeeRole = async () => {
     return viewEmployees();
 }
 
-
-
-
 // Initializes inquirer prompts
 const init = async() => {
     await prompt();
