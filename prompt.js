@@ -1,4 +1,4 @@
-var inquirer = require('inquirer');
+const inquirer = require('inquirer');
 
 const initPrompt = () => {
     inquirer.prompt ([
@@ -20,7 +20,7 @@ const initPrompt = () => {
     .then(({action}) => {
         switch(action) {
             case "view all departments":
-                return console.log('view all departments');
+                return viewDepartments();
             case "view all roles":
                 return console.log('view all roles');
             case "view all employees":
@@ -36,5 +36,20 @@ const initPrompt = () => {
         }
     });
 }
+
+const viewDepartments = () => {
+    const sql = `SELECT * FROM Department`
+
+    db.query(sql, (err, rows) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+          }
+          res.json({
+            message: 'success',
+            data: rows
+          });
+    });
+};
 
 initPrompt();
